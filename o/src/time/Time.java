@@ -3,14 +3,15 @@ package time;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.time.temporal.TemporalUnit;
+import java.util.Map;
 
 public class Time {
 
 	private ZonedDateTime startTime;
 	private ZonedDateTime endTime;
-	private Duration duration;
+	private Duration duration; // Persisted as Long
 	// TODO unit would be only parameterised for view methods.
-	private TemporalUnit unit;
+	private Map<TemporalUnit, Long> durationByUnit;
 
 	// Accessors
 	public ZonedDateTime getStartTime() {
@@ -62,13 +63,7 @@ public class Time {
 		this.duration = duration;
 	}
 
-	public TemporalUnit getUnit() {
-		return unit;
-	}
-
-	public void setUnit(TemporalUnit unit) {
-		this.unit = unit;
-	}
+	
 
 	// overloaded methods
 
