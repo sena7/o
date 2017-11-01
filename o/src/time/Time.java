@@ -13,6 +13,10 @@ public class Time {
 	// TODO unit would be only parameterised for view methods.
 	private Map<TemporalUnit, Long> durationByUnit;
 
+	
+
+	
+	
 	// Accessors
 	public ZonedDateTime getStartTime() {
 		return startTime;
@@ -96,9 +100,21 @@ public class Time {
 
 	}
 
+	
+	
+	public Map<TemporalUnit, Long> getDurationByUnit() {
+		return durationByUnit;
+	}
+
+	public void setDurationByUnit(Map<TemporalUnit, Long> durationByUnit) {
+		this.durationByUnit = durationByUnit;
+	}
+
+
+
 	// TODO Define the use
 	// Do I even need this ?
-	public static enum DurationUnit {
+	public static enum DurationCalculationUnit {
 		MINUTES, SECONDS, NANOS;
 	}
 
