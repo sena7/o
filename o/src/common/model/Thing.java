@@ -9,11 +9,11 @@ import time.Time;
  *         <p>
  *         Anything that we recognise. <br>
  *         The things we put into Thing object are the copy/aspect/reflection of
- *         the things.<br>
+ *         the actual things.<br>
  *         Nothing can be free from the time and space. <br>
  *         So Things in this program is even if they are pointing at the things.
  *         <br>
- *         We express what have about the Things in many ways.<br>
+ *         We express what have about the things in many ways.<br>
  * 
  * 
  * 
@@ -21,13 +21,15 @@ import time.Time;
  *         separately because they have different purposes. <br>
  *         The uniqueness of the thing is determined by <br>
  *         The time inserted into the system The equals
+ *
  */
 public class Thing {
 
 	private CommonPersistence commonPersistence;
 	private Object expressed;
-	private Boolean isUnique; // is pointing at the specific thing in your mind even though its expression was same with others
-    private Boolean isOfficial; // it has the contractual agreement on the content of this thing. cannot change the detail
+	//every thing is unique
+	//private Boolean isUnique; // is pointing at the specific thing in your mind even though its expression was same with others
+        //private Boolean isOfficial; // it has the contractual agreement on the content of this thing. cannot change the detail
 	private Time time;
 	
     //Accessors
@@ -47,23 +49,6 @@ public class Thing {
 		this.expressed = expressed;
 	}
 	
-
-	public Boolean getIsUnique() {
-		return isUnique;
-	}
-
-	public void setIsUnique(Boolean isUnique) {
-		this.isUnique = isUnique;
-	}
-
-	
-	public Boolean getIsOfficial() {
-		return isOfficial;
-	}
-
-	public void setIsOfficial(Boolean isOfficial) {
-		this.isOfficial = isOfficial;
-	}
 
 	public Time getTime() {
 		return time;
