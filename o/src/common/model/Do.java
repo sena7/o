@@ -2,8 +2,6 @@ package common.model;
 
 import java.util.List;
 
-import time.Time;
-
 public class Do extends Thing {
 
 	private List<Thing> doer;

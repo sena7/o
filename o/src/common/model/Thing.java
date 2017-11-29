@@ -1,7 +1,5 @@
 package common.model;
 
-import time.Time;
-
 /**
  * @author Sena Bak
  * <p>
@@ -25,69 +23,46 @@ public class Thing {
 
     private long id;
     private Object expressed;
-    //every thing is unique
-    //private Boolean isUnique; // is pointing at the specific thing in your mind even though its expression was same with others
-    //private Boolean isOfficial; // it has the contractual agreement on the content of this thing. cannot change the detail
     private Time time;
+    private DatabaseTime databaseTime;
 
-    //Accessors
+    /**
+     * not complete
+     */
+    public Thing(Object expressed){
+        System.out.println(expressed.getClass());
+        this.expressed = expressed;
+    }
+    public Thing(){}
     public long getId() {
         return id;
     }
 
-
-    public Time getTime() {
-        return time;
+    public void setId(long id) {
+        this.id = id;
     }
-
 
     public Object getExpressed() {
         return expressed;
     }
 
-
     public void setExpressed(Object expressed) {
         this.expressed = expressed;
     }
 
-
+    public Time getTime() {
+        return time;
+    }
 
     public void setTime(Time time) {
         this.time = time;
     }
 
+    public DatabaseTime getDatabaseTime() {
+        return databaseTime;
+    }
 
-    // TODO what if there is more primary matter which contains our thoughts ?
-    // Like brain signal.
-    // So instead of putting String, I put object as it is the very base of a
-    // type and the minimal unit of being a container.
-
-    /**
-     * True if this Thing is pointing at/holding of something specific, more
-     * substantial rather that the general, conceptual. A Thought I had is different
-     * the 'Thought' in that we use the same characters to call it. So even though I
-     * name it Thought, it is the bind of the series of things out of my head, not
-     * meaning the conceptual definition of thought in general.
-     */
-    //
-
-    // private Boolean isConceptual; // if it is set to be true, this object record
-    // will be the only one in the database.
-
-    // private List<Object> equals; // can be text, image, audio anything humans can
-    // produce to point at the Thing. Capture of the Thing. Raw
-    // if this Thing is not unique, a conceptual Thing, ..., no the relationship
-    // between the conceptual word and
-
-    // logically organised than equals.
-
-    // To explain, express this thing outwardly, with use whatever available for
-    // use and acceptable to the application. The limitations humans have the
-    // the machine have will be applied to those.
-
-    // express the below as another object, maybe as part of the Relationship
-    // object.
-    // 201709071029 These represent the relationships with the other things.
-    // SO I think Thing is not a good place to be in
-
+    public void setDatabaseTime(DatabaseTime databaseTime) {
+        this.databaseTime = databaseTime;
+    }
 }

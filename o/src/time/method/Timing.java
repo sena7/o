@@ -2,7 +2,7 @@ package time.method;
 
 import java.util.List;
 
-import time.Time;
+import common.model.Time;
 import time.wrapper.RepeatedTime;
 
 public class Timing implements Timable {

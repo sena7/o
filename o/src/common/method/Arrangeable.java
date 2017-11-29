@@ -15,6 +15,6 @@ public interface Arrangeable {
    public String combineNoteTextByTimeCreatedOrder(Map<LocalDateTime,Thought> noteMap, SortOrder order);
 
    
-   //lambda expression test
+   //lambda expression TestJavaAPIs
    //public List<Thing> filterSubstantialThings();
 }

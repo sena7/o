@@ -1,16 +1,17 @@
 package money.method;
 
-import static org.junit.Assert.assertEquals;
+
+import org.junit.jupiter.api.Test;
+import test.TestJavaAPIs;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestCalculate extends TestCase{
+public class TestCalculate extends TestJavaAPIs{
 
 	private Calculate calculate = new Calculate();
 

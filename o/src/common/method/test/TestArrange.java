@@ -1,20 +1,20 @@
 package common.method.test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import common.method.Arrange;
 import common.model.Thought;
 import constant.SortOrder;
-import junit.framework.TestCase;
+import test.TestJavaAPIs;
 
-public class TestArrange extends TestCase {
+public class TestArrange extends TestJavaAPIs {
 	
 	private static Arrange arrange = new Arrange();
 	
