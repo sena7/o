@@ -12,8 +12,6 @@ package common.model;
  * <br>
  * We express what have about the things in many ways.<br>
  * <p>
- * <p>
- * <p>
  * The uniqueness of the thing and the Thing as Object are dealt
  * separately because they have different purposes. <br>
  * The uniqueness of the thing is determined by <br>
@@ -23,17 +21,24 @@ public class Thing {
 
     private long id;
     private Object expressed;
+    /**
+     * lazy initialisation.
+     * can be null.
+     */
     private Time time;
     private DatabaseTime databaseTime;
 
     /**
      * not complete
      */
-    public Thing(Object expressed){
+    public Thing(Object expressed) {
         System.out.println(expressed.getClass());
         this.expressed = expressed;
     }
-    public Thing(){}
+
+    public Thing() {
+    }
+
     public long getId() {
         return id;
     }
@@ -42,6 +47,7 @@ public class Thing {
         this.id = id;
     }
 
+
     public Object getExpressed() {
         return expressed;
     }
@@ -49,6 +55,7 @@ public class Thing {
     public void setExpressed(Object expressed) {
         this.expressed = expressed;
     }
+
 
     public Time getTime() {
         return time;
