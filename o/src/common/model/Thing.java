@@ -72,4 +72,16 @@ public class Thing {
     public void setDatabaseTime(DatabaseTime databaseTime) {
         this.databaseTime = databaseTime;
     }
+
+
+    @Override
+    public String toString() {
+        return "Thing{" +
+                "id=" + id +
+                ", expressed=" + expressed +
+                ", expressed.getClass()=" + expressed.getClass() +
+                ", time=" + time +
+                ", databaseTime=" + databaseTime +
+                '}';
+    }
 }
