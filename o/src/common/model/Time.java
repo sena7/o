@@ -14,8 +14,13 @@ public class Time extends Thing {
     private Duration duration; // Persisted as Long
     private Map<TemporalUnit, Long> durationByUnit;
 
+    /**
+     * Constructor to use when an instance required without any inputs.
+     */
     public Time() {
         super();
+
+        this.startTime = ZonedDateTime.now();
     }
 
     // Accessors
@@ -111,8 +116,14 @@ public class Time extends Thing {
 
     // TODO Define the use
     // Do I even need this ?
-    public static enum DurationCalculationUnit {
+    public enum DurationCalculationUnit {
         MINUTES, SECONDS, NANOS;
     }
+
+    public enum TimeType{
+        START, END;
+    }
+
+
 
 }

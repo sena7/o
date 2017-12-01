@@ -22,4 +22,8 @@ public class DatabaseTime {
     public void setUpdated(ZonedDateTime updated) {
         this.updated = updated;
     }
+
+    public enum DatabaseTimeType{
+        INSERTED, UPDATED;
+    }
 }

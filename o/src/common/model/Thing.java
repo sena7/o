@@ -34,6 +34,7 @@ public class Thing {
     public Thing(Object expressed) {
         System.out.println(expressed.getClass());
         this.expressed = expressed;
+        this.time = new Time();
     }
 
     public Thing() {
