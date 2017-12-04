@@ -1,26 +1,46 @@
 package common.model;
 
-import common.model.Thing;
-
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.time.temporal.TemporalUnit;
 import java.util.Map;
+import java.util.Set;
 
-public class Time extends Thing {
+public class Time {
 
     private ZonedDateTime startTime;
     private ZonedDateTime endTime;
     private Duration duration; // Persisted as Long
-    private Map<TemporalUnit, Long> durationByUnit;
+    private Map<TemporalUnit, Long> durationUnitMap;
 
     /**
      * Constructor to use when an instance required without any inputs.
+     * duration will be calculated at the front-end side, so it cannot be wrong value
      */
-    public Time() {
-        super();
+    public Time(ZonedDateTime start) {
+        if (start == null) {
+            this.startTime = ZonedDateTime.now();
 
-        this.startTime = ZonedDateTime.now();
+        } else {
+            setStartTime(start);
+        }
+
+    }
+    public Time(ZonedDateTime start, ZonedDateTime end, Duration duration) {
+        if (start == null && end == null && duration == null) {
+            this.startTime = ZonedDateTime.now();
+            this.endTime = null;
+            this.duration = null;
+        } else if (start != null && end != null && duration != null) {
+            if (!duration.equals(calculateDuration(start, end))) ;
+            throw new IllegalArgumentException("The duration value input does not match the actual duration from the start to end time.");
+
+        } else {
+            setStartTime(start);
+            setEndTime(end);
+            setDuration(duration);
+        }
+
     }
 
     // Accessors
@@ -31,7 +51,25 @@ public class Time extends Thing {
     public ZonedDateTime getEndTime() {
         return endTime;
     }
+    public Map<TemporalUnit, Long> getDurationUnitMap() {
+        return durationUnitMap;
+    }
 
+
+    public Set<TemporalUnit> getUnitSet(){
+
+        return this.durationUnitMap.keySet();
+    }
+
+    public Long getDurationByUnit(TemporalUnit unit) {
+
+        for (Map.Entry<TemporalUnit, Long> e : this.durationUnitMap.entrySet()) {
+            if (unit.equals(e.getKey())) {
+                return e.getValue();
+            }
+        }
+        return null;
+    }
 
     // Mutators
     public void setStartTime(ZonedDateTime startTime) {
@@ -82,8 +120,8 @@ public class Time extends Thing {
      * @param endTime
      * @param duration
      */
-    public void calculateStartTime(ZonedDateTime endTime, Duration duration) {
-        this.startTime = endTime.minus(duration);
+    public ZonedDateTime calculateStartTime(ZonedDateTime endTime, Duration duration) {
+        return endTime.minus(duration);
 
     }
 
@@ -91,39 +129,29 @@ public class Time extends Thing {
      * @param startTime
      * @param endTime
      */
-    public void calculateDuration(ZonedDateTime startTime, ZonedDateTime endTime) {
-        setDuration(Duration.between(startTime, endTime));
+    public Duration calculateDuration(ZonedDateTime startTime, ZonedDateTime endTime) {
+        return Duration.between(startTime, endTime);
     }
 
     /**
      * @param startTime
      * @param duration
      */
-    public void calculateEndTime(ZonedDateTime startTime, Duration duration) {
-        setEndTime(startTime.plus(duration));
+    public ZonedDateTime calculateEndTime(ZonedDateTime startTime, Duration duration) {
+        return startTime.plus(duration);
 
-    }
-
-
-    public Map<TemporalUnit, Long> getDurationByUnit() {
-        return durationByUnit;
-    }
-
-    public void setDurationByUnit(Map<TemporalUnit, Long> durationByUnit) {
-        this.durationByUnit = durationByUnit;
     }
 
 
     // TODO Define the use
     // Do I even need this ?
-    public enum DurationCalculationUnit {
-        MINUTES, SECONDS, NANOS;
-    }
+    /*public enum DurationUnit {
+        YEARS, MONTHS, DAYS, HOURS, MINUTES, SECONDS, NANOS
+    }*/
 
-    public enum TimeType{
-        START, END;
+    public enum TimeType {
+        START, END
     }
-
 
 
 }

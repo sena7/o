@@ -29,7 +29,7 @@ public class TestJavaAPIs {
 		System.out.println(d.toNanos());*/
 		
 		
-		Time t = new Time();
+		Time t = new Time(null, null, null);
 		t.setStartTime(t1);
 		t.setEndTime(t2);
 		

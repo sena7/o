@@ -6,6 +6,8 @@ import constant.SortOrder;
 import java.time.ZonedDateTime;
 import java.util.*;
 
+import static common.model.Time.TimeType.START;
+
 public class Bind extends Thing implements SoftThingCollection {
 
     /**
@@ -39,31 +41,60 @@ public class Bind extends Thing implements SoftThingCollection {
     }
 
     @Override
-    public Collection<Thing> sortByTime(SortOrder sortOrder, Time.TimeType timeType) {
+    public List<Thing> sortByTime(SortOrder sortOrder, Time.TimeType timeType) {
         List<Thing> result = new ArrayList<>();
 
 
         List<ZonedDateTime> timeList = new ArrayList<>();
-        List<Thing> bucket = new ArrayList<>();
-        bucket.addAll(this.boundList);
+        List<Thing> thingListTmp = new ArrayList<>();
+        thingListTmp.addAll(this.boundList);
         //inserted, ascending
 
-        for (Thing t : bucket) {
-           timeList.add(t.getTime().getStartTime());
+        switch (timeType) {
+            case START:
+                for (Thing t : thingListTmp) {
+                    timeList.add(t.getTime().getStartTime());
+
+                }
+                break;
+            case END:
+                for (Thing t : thingListTmp) {
+                    timeList.add(t.getTime().getEndTime());
+
+                }
+                break;
 
         }
 
         Collections.sort(timeList);
-
-
-        for(ZonedDateTime dt : timeList){
-            for(Thing t : bucket){
-                 if(dt.equals(t.getTime().getStartTime()))
-                     result.add(t);
-            }
+        if (SortOrder.DESCENDING.equals(sortOrder)){
+            Collections.reverse(timeList);
         }
-        return result;
 
+
+            switch (timeType) {
+                case START:
+                    for (ZonedDateTime dt : timeList) {
+                        for (Thing t : thingListTmp) {
+                            System.out.println("dt.equals(t.getTime().getStartTime()) : " + dt.equals(t.getTime().getStartTime()) + " " + t.getTime().getStartTime());
+                            if (dt.equals(t.getTime().getStartTime()))
+                                result.add(t);
+                        }
+                    }
+                    break;
+                case END:
+                    for (ZonedDateTime dt : timeList) {
+                        for (Thing t : thingListTmp) {
+                            System.out.println("dt.equals(t.getTime().getEndTime()) : " + dt.equals(t.getTime().getEndTime()));
+                            if (dt.equals(t.getTime().getEndTime()))
+                                result.add(t);
+                        }
+                    }
+                    break;
+            }
+
+        System.out.println("result size: " + result.size());
+        return result;
 
 
     }
@@ -74,12 +105,12 @@ public class Bind extends Thing implements SoftThingCollection {
     }
 
     @Override
-    public Collection<Thing> sortByDatabaseTime(SortOrder sortOrder, DatabaseTime.DatabaseTimeType databaseTimeType) {
+    public List<Thing> sortByDatabaseTime(SortOrder sortOrder, DatabaseTime.DatabaseTimeType databaseTimeType) {
         return null;
     }
 
 
-    private Collection<Thing> sort(Collection<Thing> c){
+    private List<Thing> sort(Collection<Thing> c) {
         return null;
     }
 }

@@ -31,10 +31,10 @@ public class Thing {
     /**
      * not complete
      */
-    public Thing(Object expressed) {
-        System.out.println(expressed.getClass());
+    public Thing(Object expressed, Time time) {
+        System.out.println("Thing instance created") ;
         this.expressed = expressed;
-        this.time = new Time();
+        this.time = time;
     }
 
     public Thing() {

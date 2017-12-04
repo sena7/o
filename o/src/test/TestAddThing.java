@@ -1,6 +1,7 @@
 package test;
 
 import common.model.Thing;
+import common.model.Time;
 
 
 import java.io.File;
@@ -11,10 +12,10 @@ import java.nio.file.Path;
 
 public class TestAddThing extends TestJavaAPIs{
     public static void main(String[] ars){
-        Thing thing = new Thing("Hello");
+        Thing thing = new Thing("Hello", new Time(null, null, null));
 
-        File file = new File("https://jsonplaceholder.typicode.com/posts");
-        Thing thingFile = new Thing(file);
+
+
 
 
         }
