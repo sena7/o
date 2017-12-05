@@ -8,7 +8,7 @@ public class Do extends Thing {
 	private Boolean isDone;
 	private Boolean isSelfTargeted;
 	private List<Thing> target;
-	private Time time;
+	private LifeTime lifeTime;
 
 	public List<Thing> getDoer() {
 		return doer;
@@ -46,12 +46,12 @@ public class Do extends Thing {
 		this.target = target;
 	}
 
-	public Time getTime() {
-		return time;
+	public LifeTime getLifeTime() {
+		return lifeTime;
 	}
 
-	public void setTime(Time time) {
-		this.time = time;
+	public void setLifeTime(LifeTime lifeTime) {
+		this.lifeTime = lifeTime;
 	}
 
 	// public void setIsSelfTargeted(Boolean isSelfTargeted) {

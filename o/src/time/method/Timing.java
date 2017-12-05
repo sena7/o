@@ -2,7 +2,7 @@ package time.method;
 
 import java.util.List;
 
-import common.model.Time;
+import common.model.LifeTime;
 import time.wrapper.RepeatedTime;
 
 public class Timing implements Timable {
@@ -10,7 +10,7 @@ public class Timing implements Timable {
 	
 
 	@Override
-	public RepeatedTime generateRepeatedTime(Time time) {
+	public RepeatedTime generateRepeatedTime(LifeTime lifeTime) {
 		// TODO Auto-generated method stub
 		return null;
 	}

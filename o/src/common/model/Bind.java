@@ -6,8 +6,6 @@ import constant.SortOrder;
 import java.time.ZonedDateTime;
 import java.util.*;
 
-import static common.model.Time.TimeType.START;
-
 public class Bind extends Thing implements SoftThingCollection {
 
     /**
@@ -41,7 +39,7 @@ public class Bind extends Thing implements SoftThingCollection {
     }
 
     @Override
-    public List<Thing> sortByTime(SortOrder sortOrder, Time.TimeType timeType) {
+    public List<Thing> sortByTime(SortOrder sortOrder, LifeTime.TimeType timeType) {
         List<Thing> result = new ArrayList<>();
 
 
@@ -53,13 +51,13 @@ public class Bind extends Thing implements SoftThingCollection {
         switch (timeType) {
             case START:
                 for (Thing t : thingListTmp) {
-                    timeList.add(t.getTime().getStartTime());
+                    timeList.add(t.getLifeTime().getStartTime());
 
                 }
                 break;
             case END:
                 for (Thing t : thingListTmp) {
-                    timeList.add(t.getTime().getEndTime());
+                    timeList.add(t.getLifeTime().getEndTime());
 
                 }
                 break;
@@ -76,8 +74,8 @@ public class Bind extends Thing implements SoftThingCollection {
                 case START:
                     for (ZonedDateTime dt : timeList) {
                         for (Thing t : thingListTmp) {
-                            System.out.println("dt.equals(t.getTime().getStartTime()) : " + dt.equals(t.getTime().getStartTime()) + " " + t.getTime().getStartTime());
-                            if (dt.equals(t.getTime().getStartTime()))
+                            System.out.println("dt.equals(t.getLifeTime().getStartTime()) : " + dt.equals(t.getLifeTime().getStartTime()) + " " + t.getLifeTime().getStartTime());
+                            if (dt.equals(t.getLifeTime().getStartTime()))
                                 result.add(t);
                         }
                     }
@@ -85,8 +83,8 @@ public class Bind extends Thing implements SoftThingCollection {
                 case END:
                     for (ZonedDateTime dt : timeList) {
                         for (Thing t : thingListTmp) {
-                            System.out.println("dt.equals(t.getTime().getEndTime()) : " + dt.equals(t.getTime().getEndTime()));
-                            if (dt.equals(t.getTime().getEndTime()))
+                            System.out.println("dt.equals(t.getLifeTime().getEndTime()) : " + dt.equals(t.getLifeTime().getEndTime()));
+                            if (dt.equals(t.getLifeTime().getEndTime()))
                                 result.add(t);
                         }
                     }

@@ -6,7 +6,7 @@ import java.time.temporal.TemporalUnit;
 import java.util.Map;
 import java.util.Set;
 
-public class Time {
+public class LifeTime {
 
     private ZonedDateTime startTime;
     private ZonedDateTime endTime;
@@ -17,7 +17,7 @@ public class Time {
      * Constructor to use when an instance required without any inputs.
      * duration will be calculated at the front-end side, so it cannot be wrong value
      */
-    public Time(ZonedDateTime start) {
+    public LifeTime(ZonedDateTime start) {
         if (start == null) {
             this.startTime = ZonedDateTime.now();
 
@@ -26,7 +26,7 @@ public class Time {
         }
 
     }
-    public Time(ZonedDateTime start, ZonedDateTime end, Duration duration) {
+    public LifeTime(ZonedDateTime start, ZonedDateTime end, Duration duration) {
         if (start == null && end == null && duration == null) {
             this.startTime = ZonedDateTime.now();
             this.endTime = null;

@@ -7,7 +7,7 @@ package common.model;
  * Anything that we recognise. <br>
  * The things we put into Thing object are the copy/aspect/reflection of
  * the actual things.<br>
- * Nothing can be free from the time and space. <br>
+ * Nothing can be free from the lifeTime and space. <br>
  * So Things in this program is even if they are pointing at the things.
  * <br>
  * We express what have about the things in many ways.<br>
@@ -15,7 +15,7 @@ package common.model;
  * The uniqueness of the thing and the Thing as Object are dealt
  * separately because they have different purposes. <br>
  * The uniqueness of the thing is determined by <br>
- * The time inserted into the system The equals
+ * The lifeTime inserted into the system The equals
  */
 public class Thing {
 
@@ -25,16 +25,16 @@ public class Thing {
      * lazy initialisation.
      * can be null.
      */
-    private Time time;
+    private LifeTime lifeTime;
     private DatabaseTime databaseTime;
 
     /**
      * not complete
      */
-    public Thing(Object expressed, Time time) {
+    public Thing(Object expressed, LifeTime lifeTime) {
         System.out.println("Thing instance created") ;
         this.expressed = expressed;
-        this.time = time;
+        this.lifeTime = lifeTime;
     }
 
     public Thing() {
@@ -58,12 +58,12 @@ public class Thing {
     }
 
 
-    public Time getTime() {
-        return time;
+    public LifeTime getLifeTime() {
+        return lifeTime;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setLifeTime(LifeTime lifeTime) {
+        this.lifeTime = lifeTime;
     }
 
     public DatabaseTime getDatabaseTime() {
@@ -81,7 +81,7 @@ public class Thing {
                 "id=" + id +
                 ", expressed=" + expressed +
                 ", expressed.getClass()=" + expressed.getClass() +
-                ", time=" + time +
+                ", lifeTime=" + lifeTime +
                 ", databaseTime=" + databaseTime +
                 '}';
     }

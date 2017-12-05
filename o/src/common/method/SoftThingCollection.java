@@ -1,12 +1,11 @@
 package common.method;
 
 import common.model.DatabaseTime;
+import common.model.LifeTime;
 import common.model.Thing;
-import common.model.Time;
 import constant.SortOrder;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 
@@ -17,7 +16,7 @@ import java.util.Map;
  */
 public interface SoftThingCollection {
 
-    Collection<Thing> sortByTime(SortOrder sortOrder, Time.TimeType timeType);
+    Collection<Thing> sortByTime(SortOrder sortOrder, LifeTime.TimeType timeType);
 
     /**
      * needs more segregation.

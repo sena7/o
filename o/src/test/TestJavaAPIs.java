@@ -3,7 +3,7 @@ package test;
 import java.time.Clock;
 import java.time.ZonedDateTime;
 
-import common.model.Time;
+import common.model.LifeTime;
 
 public class TestJavaAPIs {
 
@@ -29,7 +29,7 @@ public class TestJavaAPIs {
 		System.out.println(d.toNanos());*/
 		
 		
-		Time t = new Time(null, null, null);
+		LifeTime t = new LifeTime(null, null, null);
 		t.setStartTime(t1);
 		t.setEndTime(t2);
 		
