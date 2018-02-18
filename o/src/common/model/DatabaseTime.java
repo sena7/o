@@ -1,28 +1,10 @@
 package common.model;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 public class DatabaseTime {
-    private ZonedDateTime inserted;
-
-    private ZonedDateTime updated;
-
-    public ZonedDateTime getInserted() {
-        return inserted;
-    }
-
-    public void setInserted(ZonedDateTime inserted) {
-        this.inserted = inserted;
-    }
-
-    public ZonedDateTime getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(ZonedDateTime updated) {
-        this.updated = updated;
-    }
-
+    private List<ZonedDateTime> databaseTimeList;
     public enum DatabaseTimeType{
         INSERTED, UPDATED;
     }

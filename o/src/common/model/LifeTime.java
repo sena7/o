@@ -3,6 +3,7 @@ package common.model;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.time.temporal.TemporalUnit;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,10 +14,10 @@ public class LifeTime {
     private Duration duration; // Persisted as Long
     private Map<TemporalUnit, Long> durationUnitMap;
 
-    /**
-     * Constructor to use when an instance required without any inputs.
-     * duration will be calculated at the front-end side, so it cannot be wrong value
-     */
+    public LifeTime(){
+        this.startTime = ZonedDateTime.now();
+    }
+
     public LifeTime(ZonedDateTime start) {
         if (start == null) {
             this.startTime = ZonedDateTime.now();
@@ -26,6 +27,7 @@ public class LifeTime {
         }
 
     }
+
     public LifeTime(ZonedDateTime start, ZonedDateTime end, Duration duration) {
         if (start == null && end == null && duration == null) {
             this.startTime = ZonedDateTime.now();
@@ -51,12 +53,13 @@ public class LifeTime {
     public ZonedDateTime getEndTime() {
         return endTime;
     }
+
     public Map<TemporalUnit, Long> getDurationUnitMap() {
         return durationUnitMap;
     }
 
 
-    public Set<TemporalUnit> getUnitSet(){
+    public Set<TemporalUnit> getUnitSet() {
 
         return this.durationUnitMap.keySet();
     }
@@ -142,8 +145,32 @@ public class LifeTime {
 
     }
 
+    @Override
+    public String toString() {
+        return "LifeTime{" +
+                "startTime=" + startTime.toString() +
+                ", endTime=" + endTime.toString() +
+                ", duration=" + duration.toString() +
+                ", durationUnitMap=" + durationUnitMapToString() +
+                '}';
+    }
 
-    // TODO Define the use
+    public String durationUnitMapToString() {
+        StringBuilder b = new StringBuilder();
+        b.append("duration{");
+        Iterator<Map.Entry<TemporalUnit, Long>> iterator = this.durationUnitMap.entrySet().iterator();
+
+        while (iterator.hasNext()) {
+            b.append(iterator.next().getKey().toString() + "= " + iterator.next().getValue().toString());
+            if (iterator.hasNext()) {
+                b.append(", ");
+            }
+        }
+        b.append("}");
+        return b.toString();
+    }
+
+// TODO Define the use
     // Do I even need this ?
     /*public enum DurationUnit {
         YEARS, MONTHS, DAYS, HOURS, MINUTES, SECONDS, NANOS
